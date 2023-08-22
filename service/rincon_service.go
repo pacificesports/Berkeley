@@ -48,6 +48,7 @@ func RegisterRincon() {
 		}
 		utils.SugarLogger.Infoln("Registered service with Rincon! Service ID: " + strconv.Itoa(config.Service.ID))
 		RegisterRinconRoute("/berkeley")
+		RegisterRinconRoute("/schools")
 	}
 }
 

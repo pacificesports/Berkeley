@@ -26,7 +26,7 @@ func GetSchoolByID(c *gin.Context) {
 
 	result := service.GetSchoolByID(c.Param("schoolID"))
 	if result.ID == "" {
-		c.JSON(http.StatusNotFound, gin.H{"message": "No school found with given id: " + c.Param("userID")})
+		c.JSON(http.StatusNotFound, gin.H{"message": "No school found with given id: " + c.Param("schoolID")})
 	} else {
 		c.JSON(http.StatusOK, result)
 	}
@@ -47,5 +47,39 @@ func CreateSchool(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
 	}
-	c.JSON(http.StatusOK, service.GetSchoolById(input.ID))
+	c.JSON(http.StatusOK, service.GetSchoolByID(input.ID))
+}
+
+func VerifySchool(c *gin.Context) {
+	// Start tracing span
+	span := utils.BuildSpan(c.Request.Context(), "VerifySchool", oteltrace.WithAttributes(attribute.Key("Request-ID").String(c.GetHeader("Request-ID"))))
+	defer span.End()
+
+	if err := service.VerifySchool(c.Param("schoolID")); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		return
+	}
+	result := service.GetSchoolByID(c.Param("schoolID"))
+	if result.ID == "" {
+		c.JSON(http.StatusNotFound, gin.H{"message": "No school found with given id: " + c.Param("schoolID")})
+	} else {
+		c.JSON(http.StatusOK, result)
+	}
+}
+
+func UnverifySchool(c *gin.Context) {
+	// Start tracing span
+	span := utils.BuildSpan(c.Request.Context(), "UnverifySchool", oteltrace.WithAttributes(attribute.Key("Request-ID").String(c.GetHeader("Request-ID"))))
+	defer span.End()
+
+	if err := service.UnverifySchool(c.Param("schoolID")); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		return
+	}
+	result := service.GetSchoolByID(c.Param("schoolID"))
+	if result.ID == "" {
+		c.JSON(http.StatusNotFound, gin.H{"message": "No school found with given id: " + c.Param("schoolID")})
+	} else {
+		c.JSON(http.StatusOK, result)
+	}
 }

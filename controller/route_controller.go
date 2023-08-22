@@ -14,6 +14,8 @@ func InitializeRoutes(router *gin.Engine) {
 	router.GET("/schools", GetAllSchools)
 	router.GET("/schools/:schoolID", GetSchoolByID)
 	router.POST("/schools/:schoolID", CreateSchool)
+	router.POST("/schools/:schoolID/verify", VerifySchool)
+	router.DELETE("/schools/:schoolID/verify", UnverifySchool)
 	router.GET("/schools/:schoolID/tags", GetTagsForSchool)
 	router.POST("/schools/:schoolID/tags", AddTagForSchool)
 	router.DELETE("/schools/:schoolID/tags", RemoveTagForSchool)

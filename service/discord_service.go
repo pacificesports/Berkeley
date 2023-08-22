@@ -28,8 +28,8 @@ func DiscordLogNewSchool(school model.School) {
 	var embeds []*discordgo.MessageEmbed
 	var fields []*discordgo.MessageEmbedField
 	fields = append(fields, &discordgo.MessageEmbedField{
-		Name:   "ID",
-		Value:  school.ID,
+		Name:   "Name",
+		Value:  school.Name,
 		Inline: false,
 	})
 	fields = append(fields, &discordgo.MessageEmbedField{
