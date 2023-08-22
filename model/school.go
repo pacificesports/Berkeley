@@ -12,8 +12,8 @@ type School struct {
 	Type        string    `json:"type"`
 	Address     string    `json:"address"`
 	Verified    bool      `json:"verified"`
-	Roles       []Tag     `gorm:"-" json:"tags"`
-	Privacy     []Email   `gorm:"-" json:"emails"`
+	Tags        []Tag     `gorm:"-" json:"tags"`
+	Emails      []Email   `gorm:"-" json:"emails"`
 	UpdatedAt   time.Time `gorm:"autoUpdateTime" json:"updated_at"`
 	CreatedAt   time.Time `gorm:"autoCreateTime" json:"created_at"`
 }
