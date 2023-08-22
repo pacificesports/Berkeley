@@ -17,7 +17,7 @@ func GetAllSchools() []model.School {
 	return schools
 }
 
-func GetSchoolById(id string) model.School {
+func GetSchoolByID(id string) model.School {
 	var school model.School
 	result := DB.Where("id = ?", id).First(&school)
 	if result.Error != nil {

@@ -20,8 +20,8 @@ func AddTagForSchool(tag model.Tag) error {
 	return nil
 }
 
-func DeleteTagForSchool(schoolId string, tag string) error {
-	result := DB.Where("school_id = ? AND tag = ?", schoolId, tag).Delete(&model.Tag{})
+func DeleteTagForSchool(tag model.Tag) error {
+	result := DB.Where("school_id = ? AND tag = ?", tag.SchoolID, tag.Tag).Delete(&model.Tag{})
 	if result.Error != nil {
 		return result.Error
 	}

@@ -20,8 +20,8 @@ func AddEmailForSchool(email model.Email) error {
 	return nil
 }
 
-func DeleteEmailForSchool(schoolId string, email string) error {
-	result := DB.Where("school_id = ? AND email = ?", schoolId, email).Delete(&model.Email{})
+func DeleteEmailForSchool(email model.Email) error {
+	result := DB.Where("school_id = ? AND email = ?", email.SchoolID, email.Email).Delete(&model.Email{})
 	if result.Error != nil {
 		return result.Error
 	}

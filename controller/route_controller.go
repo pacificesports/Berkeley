@@ -11,6 +11,15 @@ import (
 
 func InitializeRoutes(router *gin.Engine) {
 	router.GET("/berkeley/ping", Ping)
+	router.GET("/schools", GetAllSchools)
+	router.GET("/schools/:schoolID", GetSchoolByID)
+	router.POST("/schools/:schoolID", CreateSchool)
+	router.GET("/schools/:schoolID/tags", GetTagsForSchool)
+	router.POST("/schools/:schoolID/tags", AddTagForSchool)
+	router.DELETE("/schools/:schoolID/tags", RemoveTagForSchool)
+	router.GET("/schools/:schoolID/emails", GetEmailsForSchool)
+	router.POST("/schools/:schoolID/emails", AddEmailForSchool)
+	router.DELETE("/schools/:schoolID/emails", RemoveEmailForSchool)
 }
 
 func RequestLogger() gin.HandlerFunc {
