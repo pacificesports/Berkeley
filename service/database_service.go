@@ -2,6 +2,7 @@ package service
 
 import (
 	"berkeley/config"
+	"berkeley/model"
 	"berkeley/utils"
 	"fmt"
 	"gorm.io/driver/sqlserver"
@@ -27,7 +28,7 @@ func InitializeDB() {
 		}
 	} else {
 		utils.SugarLogger.Infoln("Connected to postgres database")
-		db.AutoMigrate()
+		db.AutoMigrate(&model.School{}, &model.Tag{}, &model.Email{})
 		utils.SugarLogger.Infoln("AutoMigration complete")
 		DB = db
 	}
