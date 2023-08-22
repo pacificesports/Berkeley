@@ -1,11 +1,11 @@
 package service
 
 import (
+	"berkeley/config"
+	"berkeley/utils"
 	"context"
 	"encoding/base64"
 	firebase "firebase.google.com/go/v4"
-	"fremont/config"
-	"fremont/utils"
 	"google.golang.org/api/option"
 	"time"
 )

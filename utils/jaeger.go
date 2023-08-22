@@ -1,8 +1,8 @@
 package utils
 
 import (
+	"berkeley/config"
 	"context"
-	"fremont/config"
 	"github.com/gin-gonic/gin"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"

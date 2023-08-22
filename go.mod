@@ -1,4 +1,4 @@
-module fremont
+module berkeley
 
 go 1.20
 

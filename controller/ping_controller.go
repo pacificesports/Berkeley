@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"fremont/config"
-	"fremont/utils"
+	"berkeley/config"
+	"berkeley/utils"
 	"github.com/gin-gonic/gin"
 	"go.opentelemetry.io/otel/attribute"
 	oteltrace "go.opentelemetry.io/otel/trace"

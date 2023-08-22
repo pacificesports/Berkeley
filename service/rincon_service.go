@@ -1,10 +1,10 @@
 package service
 
 import (
+	"berkeley/config"
+	"berkeley/utils"
 	"bytes"
 	"encoding/json"
-	"fremont/config"
-	"fremont/utils"
 	"net/http"
 	"strconv"
 	"time"
@@ -17,10 +17,10 @@ func RegisterRincon() {
 	var portInt, _ = strconv.Atoi(config.Port)
 	rinconBody, _ := json.Marshal(map[string]interface{}{
 		// TODO: change service name
-		"name":    "Fremont",
+		"name":    "Berkeley",
 		"version": config.Version,
 		// TODO: change service url
-		"url":          "http://fremont:" + config.Port,
+		"url":          "http://berkeley:" + config.Port,
 		"port":         portInt,
 		"status_email": config.StatusEmail,
 	})
@@ -47,8 +47,7 @@ func RegisterRincon() {
 			json.NewDecoder(res.Body).Decode(&config.Service)
 		}
 		utils.SugarLogger.Infoln("Registered service with Rincon! Service ID: " + strconv.Itoa(config.Service.ID))
-		// TODO: change route
-		RegisterRinconRoute("/fremont")
+		RegisterRinconRoute("/berkeley")
 	}
 }
 

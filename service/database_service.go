@@ -1,9 +1,9 @@
 package service
 
 import (
+	"berkeley/config"
+	"berkeley/utils"
 	"fmt"
-	"fremont/config"
-	"fremont/utils"
 	"gorm.io/driver/sqlserver"
 	"gorm.io/gorm"
 	"time"
