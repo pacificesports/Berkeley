@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"berkeley/config"
 	"berkeley/service"
 	"berkeley/utils"
 	"context"
@@ -10,7 +11,7 @@ import (
 )
 
 func InitializeRoutes(router *gin.Engine) {
-	router.GET("/berkeley/ping", Ping)
+	router.GET("/"+strings.ToLower(config.Service.Name)+"/ping", Ping)
 	router.GET("/schools", GetAllSchools)
 	router.GET("/schools/:schoolID", GetSchoolByID)
 	router.POST("/schools/:schoolID", CreateSchool)
