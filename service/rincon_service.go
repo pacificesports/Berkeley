@@ -16,7 +16,6 @@ var rinconRetries = 0
 var rinconHost = "http://localhost:" + config.RinconPort
 
 func RegisterRincon() {
-
 	var portInt, _ = strconv.Atoi(config.Port)
 	config.Service.Port = portInt
 
@@ -63,7 +62,7 @@ func RegisterRinconRoute(route string) {
 		"service_name": config.Service.Name,
 	})
 	responseBody := bytes.NewBuffer(rinconBody)
-	_, err := http.Post(rinconHost+":"+config.RinconPort+"/routes", "application/json", responseBody)
+	_, err := http.Post(rinconHost+"/routes", "application/json", responseBody)
 	if err != nil {
 	}
 	utils.SugarLogger.Infoln("Registered route " + route)
