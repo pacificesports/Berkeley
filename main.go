@@ -16,7 +16,6 @@ func setupRouter() *gin.Engine {
 	}
 	r := gin.Default()
 	r.Use(controller.RequestLogger())
-	r.Use(utils.JaegerPropogator())
 	r.Use(controller.AuthChecker())
 	return r
 }
@@ -30,7 +29,6 @@ func main() {
 	service.RegisterRincon()
 	service.InitializeFirebase()
 	service.ConnectDiscord()
-	utils.InitializeJaeger()
 
 	controller.InitializeRoutes(router)
 	router.Run(":" + config.Port)
